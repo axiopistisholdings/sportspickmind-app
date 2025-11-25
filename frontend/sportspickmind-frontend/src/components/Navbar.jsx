@@ -62,9 +62,9 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-slate-200 dark:border-slate-700' 
-          : 'bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700'
+        scrolled
+          ? 'bg-black/95 backdrop-blur-md shadow-lg shadow-blue-500/10 border-b border-gray-800'
+          : 'bg-black border-b border-gray-800'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -72,17 +72,21 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <motion.div
-              whileHover={{ scale: 1.05, rotate: 5 }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow"
+              className="relative"
             >
-              <Brain className="w-6 h-6 text-white" />
+              <img
+                src="/spm-logo-no-background.png"
+                alt="SportsPickMind"
+                className="h-12 w-auto drop-shadow-[0_0_15px_rgba(59,130,246,0.5)] group-hover:drop-shadow-[0_0_25px_rgba(59,130,246,0.7)] transition-all"
+              />
             </motion.div>
             <div className="hidden sm:block">
-              <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <h1 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400">
                 SportsPickMind
               </h1>
-              <p className="text-xs text-slate-500 dark:text-slate-400 -mt-1">
+              <p className="text-xs text-gray-400 -mt-1">
                 by Axiopistis Holdings
               </p>
             </div>
@@ -98,7 +102,7 @@ const Navbar = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search NFL, NBA, MLB teams, players, games..."
-                  className="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 transition-all"
+                  className="w-full pl-10 pr-4 py-2 bg-gray-900 border border-gray-700 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500/50 text-white placeholder-gray-500 transition-all"
                 />
               </div>
             </form>
@@ -114,8 +118,8 @@ const Navbar = () => {
                   to={item.href}
                   className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 ${
                     isActive(item.href)
-                      ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                      ? 'text-blue-400 bg-blue-500/20 shadow-lg shadow-blue-500/20'
+                      : 'text-gray-300 hover:text-white hover:bg-gray-800'
                   }`}
                 >
                   <Icon className="w-4 h-4" />

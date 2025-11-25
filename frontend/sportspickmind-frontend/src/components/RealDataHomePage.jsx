@@ -69,19 +69,73 @@ const RealDataHomePage = () => {
   return (
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden bg-gradient-to-b from-black via-gray-900 to-black">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
+      <section className="relative py-32 overflow-hidden">
+        {/* Hero Background Image with Overlay */}
+        <div className="absolute inset-0">
+          <img
+            src="/spm-hero-image.jpg"
+            alt="Sports"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/30 via-transparent to-purple-900/30"></div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-6xl md:text-8xl font-black text-white mb-6 drop-shadow-2xl"
+            >
               AI-Powered Sports
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-                {' '}Predictions
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 drop-shadow-[0_0_30px_rgba(59,130,246,0.5)]">
+                Predictions
               </span>
-            </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-2xl text-gray-200 mb-12 max-w-4xl mx-auto drop-shadow-lg font-medium"
+            >
               Enterprise-grade AI analysis with real-time predictions and self-learning algorithms
-            </p>
+            </motion.p>
+
+            {/* Sport Badges */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-wrap justify-center gap-6 mb-12"
+            >
+              <motion.img
+                whileHover={{ scale: 1.1, y: -5 }}
+                src="/spm-pro-football-badge.jpg"
+                alt="Pro Football"
+                className="h-24 w-auto rounded-lg shadow-2xl shadow-orange-500/50 cursor-pointer"
+              />
+              <motion.img
+                whileHover={{ scale: 1.1, y: -5 }}
+                src="/spm-pro-basketball-badge.jpg"
+                alt="Pro Basketball"
+                className="h-24 w-auto rounded-lg shadow-2xl shadow-green-500/50 cursor-pointer"
+              />
+              <motion.img
+                whileHover={{ scale: 1.1, y: -5 }}
+                src="/spm-pro-baseball-badge.jpg"
+                alt="Pro Baseball"
+                className="h-24 w-auto rounded-lg shadow-2xl shadow-red-500/50 cursor-pointer"
+              />
+              <motion.img
+                whileHover={{ scale: 1.1, y: -5 }}
+                src="/spm-pro-hockey-badge.jpg"
+                alt="Pro Hockey"
+                className="h-24 w-auto rounded-lg shadow-2xl shadow-blue-500/50 cursor-pointer"
+              />
+            </motion.div>
             
             {/* Adsterra Ad Placement */}
             <div className="mb-8">
