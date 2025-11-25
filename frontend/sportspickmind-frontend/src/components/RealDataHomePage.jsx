@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Star, TrendingUp, Target, Clock, AlertCircle } from 'lucide-react';
 import AINewsSection from './AINewsSection';
 
