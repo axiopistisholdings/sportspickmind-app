@@ -1,0 +1,28 @@
+{
+  "name": "sportspickmind-workers",
+  "version": "2.0.0",
+  "description": "SportsPickMind Cloudflare Workers API",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --env=\"\"",
+    "deploy:production": "wrangler deploy --env production",
+    "deploy:staging": "wrangler deploy --env staging",
+    "tail": "wrangler tail",
+    "build": "echo 'No build step required for Workers'",
+    "test": "echo \"Tests coming soon\" && exit 0"
+  },
+  "keywords": [
+    "cloudflare",
+    "workers",
+    "sports",
+    "predictions",
+    "ai"
+  ],
+  "author": "Axiopistis Holdings Labs",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^4.50.0"
+  }
+}

@@ -1,0 +1,75 @@
+# Wrangler Configuration for SportsPickMind
+# Account: Axiopistis Holdings Labs
+# Account ID: 92e19266d2ef7c694805a55fd32b68c9
+
+name = "sportspickmind"
+main = "src/index.js"
+compatibility_date = "2024-11-24"
+compatibility_flags = ["nodejs_compat"]
+
+# Workers Routes (for API endpoints)
+workers_dev = true
+
+# Account ID
+account_id = "92e19266d2ef7c694805a55fd32b68c9"
+
+# D1 Database Binding
+[[d1_databases]]
+binding = "DB"
+database_name = "sportspickmind-db"
+database_id = "e33a138a-20aa-458a-9ec1-a499c4d4229e"
+
+# KV Namespace Binding (for caching)
+[[kv_namespaces]]
+binding = "CACHE"
+id = "c0df07a746854432af00a9a63fa86193"
+
+# R2 Bucket Binding (for assets)
+[[r2_buckets]]
+binding = "ASSETS"
+bucket_name = "sportspickmind-assets"
+
+# Environment Variables (will be set via wrangler secret)
+# These should NOT contain actual values, just documentation
+[vars]
+NODE_ENV = "production"
+SPORTS_API_BASE_URL = "https://www.thesportsdb.com/api/v1/json"
+ESPN_RSS_URL = "https://www.espn.com/espn/rss/news"
+NFL_RSS_URL = "https://www.espn.com/espn/rss/nfl/news"
+NBA_RSS_URL = "https://www.espn.com/espn/rss/nba/news"
+MLB_RSS_URL = "https://www.espn.com/espn/rss/mlb/news"
+
+# Secrets (set via: wrangler secret put <KEY>)
+# - GROQ_API_KEY
+# - JWT_SECRET
+# - MONGODB_URI (if keeping MongoDB)
+# - SPORTS_API_KEY
+
+# Development configuration
+[dev]
+port = 8787
+local_protocol = "http"
+
+# Durable Objects (if needed in future)
+# [[durable_objects.bindings]]
+# name = "PREDICTION_CACHE"
+# class_name = "PredictionCache"
+# script_name = "sportspickmind"
+
+# Analytics Engine (for tracking) - Enable in Cloudflare Dashboard first
+# [[analytics_engine_datasets]]
+# binding = "ANALYTICS"
+
+# Cron Triggers for Automated Tasks
+# Single cron that runs every 6 hours and decides what tasks to run
+[triggers]
+crons = ["0 */6 * * *"]  # Run every 6 hours
+
+# CORS Configuration (handled in worker code)
+[env.production]
+name = "sportspickmind-production"
+vars = { NODE_ENV = "production" }
+
+[env.staging]
+name = "sportspickmind-staging"
+vars = { NODE_ENV = "staging" }
