@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Star, TrendingUp, Target, Clock, AlertCircle } from 'lucide-react';
+import AINewsSection from './AINewsSection';
 
 const RealDataHomePage = () => {
   const [realGames, setRealGames] = useState([]);
@@ -55,30 +56,31 @@ const RealDataHomePage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center">
+      <div className="min-h-screen bg-black flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-lg text-slate-600 dark:text-slate-300">Loading real sports data...</p>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">Fetching today's scheduled games</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
+          <p className="text-lg text-gray-300">Loading real sports data...</p>
+          <p className="text-sm text-gray-400 mt-2">Fetching today's scheduled games</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-black">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 overflow-hidden bg-gradient-to-b from-black via-gray-900 to-black">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
               AI-Powered Sports
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
                 {' '}Predictions
               </span>
             </h1>
-            <p className="text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-3xl mx-auto">
-              Real-time predictions for actual scheduled games using Groq AI and live sports data.
+            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+              Enterprise-grade AI analysis with real-time predictions and self-learning algorithms
             </p>
             
             {/* Adsterra Ad Placement */}
@@ -98,13 +100,13 @@ const RealDataHomePage = () => {
       </section>
 
       {/* Real Games Section */}
-      <section className="py-16 bg-white dark:bg-slate-900">
+      <section className="py-16 bg-black border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
-              Today's Real Games & AI Predictions
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Today's <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Live Predictions</span>
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300">
+            <p className="text-lg text-gray-400">
               {realGames.length > 0 
                 ? `${realGames.length} games scheduled for ${new Date().toLocaleDateString()}`
                 : 'No games scheduled for today'
@@ -113,23 +115,23 @@ const RealDataHomePage = () => {
           </div>
 
           {error && (
-            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 mb-8">
+            <div className="bg-red-900/20 border border-red-500/50 rounded-lg p-4 mb-8">
               <div className="flex items-center">
-                <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400 mr-2" />
-                <p className="text-red-800 dark:text-red-200">{error}</p>
+                <AlertCircle className="w-5 h-5 text-red-400 mr-2" />
+                <p className="text-red-300">{error}</p>
               </div>
             </div>
           )}
 
           {realGames.length === 0 && !loading && !error && (
             <div className="text-center py-12">
-              <div className="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8 text-slate-400" />
+              <div className="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-8 h-8 text-gray-400" />
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
+              <h3 className="text-xl font-semibold text-white mb-2">
                 No Games Today
               </h3>
-              <p className="text-slate-600 dark:text-slate-300">
+              <p className="text-gray-400">
                 Check back tomorrow for new games and predictions.
               </p>
             </div>
@@ -145,58 +147,58 @@ const RealDataHomePage = () => {
                 return (
                   <div
                     key={game.id || index}
-                    className="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-slate-200 dark:border-slate-700"
+                    className="group bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-700 hover:border-blue-500/50 transform hover:scale-105"
                   >
                     <div className="flex items-center justify-between mb-4">
-                      <span className="text-sm font-medium text-slate-500 dark:text-slate-400 uppercase">
+                      <span className="px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full border border-blue-500/30 uppercase">
                         {game.sport} • {game.status}
                       </span>
                       {prediction && (
                         <div className="flex items-center space-x-1">
                           <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                          <span className="text-sm font-medium text-slate-600 dark:text-slate-300">
+                          <span className="text-sm font-medium text-gray-300">
                             {prediction.confidence}%
                           </span>
                         </div>
                       )}
                     </div>
-                    
+
                     <div className="text-center mb-4">
-                      <div className="text-lg font-semibold text-slate-900 dark:text-white mb-1">
+                      <div className="text-lg font-semibold text-white mb-1 group-hover:text-blue-400 transition-colors">
                         {game.homeTeam} vs {game.awayTeam}
                       </div>
-                      <div className="text-sm text-slate-500 dark:text-slate-400 flex items-center justify-center">
+                      <div className="text-sm text-gray-400 flex items-center justify-center">
                         <Clock className="w-4 h-4 mr-1" />
                         {formatGameTime(game.date)}
                       </div>
                       {game.venue && (
-                        <div className="text-xs text-slate-400 mt-1">
+                        <div className="text-xs text-gray-500 mt-1">
                           {game.venue}
                         </div>
                       )}
                     </div>
-                    
+
                     {prediction ? (
                       <div className="text-center">
-                        <div className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+                        <div className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-1">
                           {prediction.prediction}
                         </div>
                         {prediction.predictedScore && (
-                          <div className="text-sm text-slate-500 dark:text-slate-400">
+                          <div className="text-sm text-gray-400">
                             {prediction.predictedScore.home}-{prediction.predictedScore.away}
                           </div>
                         )}
-                        <div className="text-xs text-slate-400 mt-2">
+                        <div className="text-xs text-gray-500 mt-2">
                           🤖 {prediction.aiModel}
                         </div>
                         {prediction.reasoning && (
-                          <div className="text-xs text-slate-500 dark:text-slate-400 mt-2 line-clamp-2">
+                          <div className="text-xs text-gray-400 mt-2 line-clamp-2">
                             {prediction.reasoning}
                           </div>
                         )}
                       </div>
                     ) : (
-                      <div className="text-center text-slate-400">
+                      <div className="text-center text-gray-400">
                         <div className="text-sm">Generating AI prediction...</div>
                       </div>
                     )}
@@ -221,52 +223,55 @@ const RealDataHomePage = () => {
         <div className="text-xs text-gray-400 text-center mt-1">Advertisement</div>
       </div>
 
+      {/* AI News Section */}
+      <AINewsSection />
+
       {/* Features Section */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-800">
+      <section className="py-20 bg-gradient-to-b from-black via-gray-900 to-black border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
-              Real Data, Real Predictions
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Enterprise-Grade <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Intelligence</span>
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300">
-              No fake data - only actual scheduled games and AI-powered analysis
+            <p className="text-lg text-gray-400">
+              Self-learning AI that improves with every prediction
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+            <div className="text-center group">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-blue-500/50 group-hover:shadow-blue-500/70 transition-shadow">
+                <TrendingUp className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
-                Groq AI Powered
+              <h3 className="text-xl font-semibold text-white mb-3">
+                Self-Learning AI
               </h3>
-              <p className="text-slate-600 dark:text-slate-300">
-                Advanced Llama3-8B model analyzes real team data and statistics for accurate predictions.
+              <p className="text-gray-400">
+                Advanced algorithms validate predictions against real results and optimize weights weekly for continuous improvement.
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Target className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+            <div className="text-center group">
+              <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-purple-500/50 group-hover:shadow-purple-500/70 transition-shadow">
+                <Target className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
-                Live Game Data
+              <h3 className="text-xl font-semibold text-white mb-3">
+                Real-Time Data
               </h3>
-              <p className="text-slate-600 dark:text-slate-300">
-                Real-time game schedules from ESPN and official sports APIs - no mock or fake data.
+              <p className="text-gray-400">
+                Live game data from ESPN, automated injury tracking, and 10-factor prediction analysis updated every 6 hours.
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8 text-green-600 dark:text-green-400" />
+            <div className="text-center group">
+              <div className="w-20 h-20 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-cyan-500/50 group-hover:shadow-cyan-500/70 transition-shadow">
+                <Clock className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
-                Daily Updates
+              <h3 className="text-xl font-semibold text-white mb-3">
+                AI-Generated News
               </h3>
-              <p className="text-slate-600 dark:text-slate-300">
-                Fresh predictions every day based on the latest scheduled games and team performance.
+              <p className="text-gray-400">
+                Fresh sports insights and analysis generated twice daily by Groq Llama 3.3 70B AI model.
               </p>
             </div>
           </div>
@@ -274,13 +279,14 @@ const RealDataHomePage = () => {
       </section>
 
       {/* Refresh Button */}
-      <section className="py-8 text-center">
+      <section className="py-12 text-center bg-black border-t border-gray-800">
         <button
           onClick={fetchRealData}
           disabled={loading}
-          className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+          className="group relative px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full shadow-lg shadow-blue-500/50 hover:shadow-blue-500/70 disabled:opacity-50 transition-all transform hover:scale-105 disabled:hover:scale-100"
         >
-          {loading ? 'Loading...' : 'Refresh Real Data'}
+          <span className="relative z-10">{loading ? 'Loading...' : 'Refresh Live Data'}</span>
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
         </button>
       </section>
     </div>

@@ -27,7 +27,7 @@ import { initializeAnalytics } from './utils/analytics';
 // Loading Screen Component
 const LoadingScreen = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800 flex items-center justify-center">
+    <div className="min-h-screen bg-black flex items-center justify-center">
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -103,7 +103,7 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
+        <div className="min-h-screen bg-black">
           <Navbar />
           <main className="pt-16">
             <AnimatePresence mode="wait">
